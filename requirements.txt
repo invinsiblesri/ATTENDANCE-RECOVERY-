@@ -1,0 +1,13 @@
+# Member 1 local AI agent
+langgraph
+langchain
+langchain-ollama
+langchain-core
+fastapi
+uvicorn[standard]
+httpx
+
+# Member 2 database, RAG, and tests
+chromadb>=0.4.0
+pydantic>=2.0.0
+pytest>=7.0.0
