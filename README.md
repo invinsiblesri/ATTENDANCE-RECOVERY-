@@ -9,8 +9,7 @@ Branches:
 - `member-2`: SQLite database, RAG, and memory
 - `member-3`: Streamlit UI and dashboard
 - `member-4`: Notifications and integration
-=======
-﻿# AI Attendance Recovery Agent — Database + RAG + Attendance Memory Backend
+# AI Attendance Recovery Agent — Database + RAG + Attendance Memory Backend
 
 Production-grade, offline-first backend subsystem for the **AI Attendance Recovery Agent** college hackathon prototype.
 
@@ -164,3 +163,39 @@ save_notification(
 )
 ```
  (Add Member 2 attendance backend)
+
+
+---
+
+## Member 1 Agent Integration
+
+Member 1’s local AI agent runs with Ollama and `qwen3:latest`, LangGraph, LangChain, and FastAPI. The agent is responsible for intent understanding, tool selection, deterministic recovery calculations, and final answers. Member 2’s database, RAG, and memory backend is the authoritative source for attendance and policy data.
+
+The public integration endpoint is:
+
+```http
+POST http://localhost:8000/agent/query
+Content-Type: application/json
+```
+
+Example request:
+
+```json
+{
+  "student_id": "S001",
+  "message": "Can I take leave tomorrow?"
+}
+```
+
+Member 1 should use the shared backend functions without directly depending on SQLite internals. The official functions include `get_student`, `get_all_subjects`, `get_attendance`, `get_subject_attendance`, `get_attendance_history`, `get_timetable`, `get_upcoming_classes`, `calculate_attendance`, `calculate_recovery`, `search_attendance_policy`, `save_attendance_event`, `get_attendance_memory`, `save_notification`, and `create_recovery_plan`.
+
+## Team Branches
+
+| Branch | Responsibility |
+|---|---|
+| `member-1` | AI agent and orchestration |
+| `member-2` | SQLite database, RAG, and memory |
+| `member-3` | Streamlit UI and dashboard |
+| `member-4` | Notifications and integration |
+
+The final integration flow is: Member 2 provides trusted data, Member 1 calls the backend through stable contracts, Member 4 provides notification persistence, and Member 3 displays the final result through Streamlit.
