@@ -1,0 +1,117 @@
+/* AttendAI - Modern College Student Attendance Dashboard Styles */
+
+@layer base {
+  body {
+    color: #0f172a;
+    background-color: #f8fafc;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Scrollbar for Smooth UX */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Timetable Cell Design */
+.timetable-cell {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timetable-cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+/* Subtle Status Cards */
+.status-present {
+  background-color: #ecfdf5; /* emerald-50 */
+  border-color: #a7f3d0;     /* emerald-200 */
+  color: #065f46;            /* emerald-800 */
+}
+
+.status-absent {
+  background-color: #fff1f2; /* rose-50 */
+  border-color: #fecdd3;     /* rose-200 */
+  color: #9f1239;            /* rose-800 */
+}
+
+.status-upcoming {
+  background-color: #f8fafc; /* slate-50 */
+  border-color: #e2e8f0;     /* slate-200 */
+  color: #475569;            /* slate-600 */
+}
+
+.status-leave {
+  background-color: #fffbeb; /* amber-50 */
+  border-color: #fde68a;     /* amber-200 */
+  color: #92400e;            /* amber-800 */
+}
+
+/* Status Pill Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 600;
+  line-height: 1rem;
+}
+
+.status-pill-present {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-pill-absent {
+  background-color: #ffe4e6;
+  color: #9f1239;
+}
+
+.status-pill-upcoming {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.status-pill-leave {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+/* Today Column Accent */
+.today-column {
+  background-color: rgba(239, 246, 255, 0.45);
+  border-left: 2px solid #3b82f6;
+  border-right: 2px solid #3b82f6;
+}
+
+/* Period Modal Active Transition */
+#period-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Responsive Table Pinning */
+@media (max-width: 1024px) {
+  .sticky-col {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+  }
+}
