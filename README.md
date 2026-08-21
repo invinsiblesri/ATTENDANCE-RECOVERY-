@@ -199,3 +199,47 @@ Member 1 should use the shared backend functions without directly depending on S
 | `member-4` | Notifications and integration |
 
 The final integration flow is: Member 2 provides trusted data, Member 1 calls the backend through stable contracts, Member 4 provides notification persistence, and Member 3 displays the final result through Streamlit.
+
+
+---
+
+## Member 3 Frontend Integration
+
+Member 3’s frontend lives in `frontend/` and is intentionally decoupled from the Python internals. The dashboard should call the backend through `frontend/services/api.js` rather than importing SQLite, RAG, or agent modules directly.
+
+Frontend files:
+
+```text
+frontend/
+├── index.html
+├── styles.css
+├── config.js
+├── app.js
+├── services/
+│   └── api.js
+└── README.md
+```
+
+The frontend should call the agent endpoint:
+
+```http
+POST http://localhost:8000/agent/query
+Content-Type: application/json
+```
+
+Example request:
+
+```json
+{
+  "student_id": "S001",
+  "message": "What subjects are risky?"
+}
+```
+
+Member 3 should start the backend first:
+
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn agent.api:app --reload --port 8000
+```
+
+Then open `frontend/index.html` in a browser or use the frontend instructions in `frontend/README.md`. The UI must display backend results and must not duplicate attendance calculations or policy rules.
