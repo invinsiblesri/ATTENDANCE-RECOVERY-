@@ -101,12 +101,21 @@ class NotificationResult(BaseModel):
 
 class AgentQuery(BaseModel):
     student_id: str = Field(min_length=1)
-    message: str = Field(min_length=1)
+    message: str = Field(default="Run the selected attendance workflow.", min_length=1)
+    goal: Literal["risk", "leave", "recovery", "notification", "freeform"] | None = None
+    subject_id: str | None = None
+    confirmed: bool = False
 
 
 class AgentResponse(BaseModel):
     answer: str
     student_id: str
+    goal: str = "freeform"
+    goal_status: Literal["COMPLETED", "NEEDS_CONFIRMATION", "BLOCKED"] = "COMPLETED"
+    decision: str = ""
+    evidence: list[dict[str, Any]] = Field(default_factory=list)
+    recommendations: list[str] = Field(default_factory=list)
+    action: dict[str, Any] | None = None
     tool_trace: list[str] = Field(default_factory=list)
 
 

@@ -1,0 +1,15 @@
+- [x] Confirm `scikit-learn` is declared in the merged project requirements.
+- [x] Validate the dependencies in a configured Python environment.
+- [x] Rebuild the RAG vector store successfully.
+- [x] Run the complete test suite and verify all tests pass.
+- [ ] Install scikit-learn into the user’s local `.venv`.
+- [ ] Confirm `pip show scikit-learn` reports package details in that environment.
+- [ ] Rerun the RAG build and master test suite locally.
+- [ ] Build the local policy RAG index after dependency installation.
+- [ ] Start Ollama with the qwen3:latest model available.
+- [ ] Start the FastAPI agent API on port 8000.
+- [ ] Start the frontend and verify an end-to-end agent query.
+- [x] Replace temporary agent tool adapters with Member 2’s real public data facade.
+- [x] Add structured decision, evidence, plan, and action fields to the agent response.
+- [x] Add a goal-driven interactive frontend workspace connected to the agent API.
+- [x] Verify recovery-plan and notification action flows end to end.

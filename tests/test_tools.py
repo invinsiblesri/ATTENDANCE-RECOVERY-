@@ -36,8 +36,8 @@ def test_get_attendance_returns_all_subjects():
 def test_subject_and_history_tools():
     subject = json.loads(get_subject_attendance.invoke({"student_id": "S001", "subject_id": "DBMS"}))
     history = json.loads(get_attendance_history.invoke({"student_id": "S001", "subject_id": "DBMS"}))
-    assert subject["present_classes"] == 36
-    assert len(history["history"]) == 3
+    assert subject["present_classes"] == 22
+    assert len(history["history"]) == 30
 
 
 def test_timetable_and_upcoming_classes():
@@ -49,16 +49,16 @@ def test_timetable_and_upcoming_classes():
 
 def test_calculate_attendance_and_recovery_are_deterministic():
     attendance = json.loads(calculate_attendance.invoke({"student_id": "S001", "subject_id": "DBMS"}))
-    recovery = json.loads(calculate_recovery.invoke({"attended": 36, "conducted": 50, "target": 75}))
-    assert attendance["current_percentage"] == 72.0
-    assert recovery["required_additional_classes"] == 6
+    recovery = json.loads(calculate_recovery.invoke({"attended": 22, "conducted": 30, "target": 75}))
+    assert attendance["current_percentage"] == 73.33
+    assert recovery["required_additional_classes"] == 2
     assert recovery["projected_percentage"] == 75.0
 
 
 def test_policy_has_sources():
     result = json.loads(search_attendance_policy.invoke({"question": "Can I take leave tomorrow?", "subject_id": "DBMS"}))
     assert result["results"]
-    assert result["results"][0]["source"] == "attendance_policy.txt"
+    assert result["results"][0]["source"] == "attendance_policy.md"
 
 
 def test_memory_save_and_retrieve():
@@ -71,6 +71,6 @@ def test_memory_save_and_retrieve():
 def test_recovery_plan_and_notification():
     plan = json.loads(create_recovery_plan.invoke({"student_id": "S001", "subject_id": "DBMS", "target_percentage": 75}))
     notification = json.loads(save_notification.invoke({"notification_data": {"student_id": "S001", "message": "DBMS reminder", "priority": "HIGH"}}))
-    assert plan["additional_classes_needed"] == 6
+    assert plan["additional_classes_needed"] == 2
     assert notification["status"] == "QUEUED"
     assert notification["priority"] == "HIGH"

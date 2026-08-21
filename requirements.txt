@@ -9,5 +9,7 @@ httpx
 
 # Member 2 database, RAG, and tests
 chromadb>=0.4.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
 pydantic>=2.0.0
 pytest>=7.0.0
