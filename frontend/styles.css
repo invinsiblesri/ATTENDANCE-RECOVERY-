@@ -1,0 +1,238 @@
+/* AttendAI - 100% Agentic AI Attendance Recovery System Modern Styles */
+
+@layer base {
+  body {
+    color: #0f172a;
+    background-color: #f8fafc;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Scrollbar for Smooth UX */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Tab Navigation */
+.nav-tab {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-tab.active {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+  font-weight: 600;
+}
+
+.nav-tab.active i {
+  color: #2563eb;
+}
+
+/* Agent Solution Cards & Elevation */
+.agent-card {
+  position: relative;
+  transition: all 0.25s ease;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.agent-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
+.agent-card-highlight {
+  border-color: #93c5fd;
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+}
+
+.agent-card-glow {
+  box-shadow: 0 0 0 1px #3b82f6, 0 10px 30px -5px rgba(59, 130, 246, 0.15);
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #e2e8f0;
+  border-radius: 9999px;
+  height: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+  margin-top: -6px;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background-color: #1d4ed8;
+}
+
+/* Reasoning Step Trace */
+.reasoning-node {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.reasoning-node:hover {
+  background-color: #f8fafc;
+}
+
+.reasoning-line {
+  position: absolute;
+  left: 1.15rem;
+  top: 2rem;
+  bottom: -0.75rem;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+/* Timetable Cell Styling */
+.timetable-cell {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timetable-cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+.status-present {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.status-absent {
+  background-color: #fff1f2;
+  border-color: #fecdd3;
+  color: #9f1239;
+}
+
+.status-upcoming {
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+.status-leave {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1rem;
+}
+
+.status-pill-present {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-pill-absent {
+  background-color: #ffe4e6;
+  color: #9f1239;
+}
+
+.status-pill-upcoming {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.status-pill-leave {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+/* Modal Animations */
+#period-modal.active,
+#action-modal.active {
+  opacity: 1;
+}
+
+/* Pulse animation */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.03); }
+}
+
+.pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* Toast Alerts */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 300px;
+  max-width: 420px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
